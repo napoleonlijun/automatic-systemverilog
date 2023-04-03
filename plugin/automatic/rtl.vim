@@ -2,7 +2,7 @@
 " Vim Plugin for Verilog Code Automactic Generation 
 " Author:         HonkW
 " Website:        https://honk.wang
-" Last Modified:  2022/12/06 23:26
+" Last Modified:  2023/04/03 22:39
 " File:           rtl.vim
 " Note:           RtlTree function refactor from zhangguo's original script
 "------------------------------------------------------------------------------
@@ -29,6 +29,7 @@ let s:VlogTypeData = s:VlogTypeData . '\<localparam\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<defparam\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<genvar\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<integer\>'
+let s:VlogTypeData = s:VlogTypeData . '\<logic\>'
 
 "Calculation 计算类型
 let s:VlogTypeCalc =                  '\<assign\>\|'

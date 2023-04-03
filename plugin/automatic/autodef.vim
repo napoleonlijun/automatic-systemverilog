@@ -2,7 +2,7 @@
 " Vim Plugin for Verilog Code Automactic Generation 
 " Author:         HonkW
 " Website:        https://honk.wang
-" Last Modified:  2022/12/26 23:14
+" Last Modified:  2023/04/03 22:29
 " File:           autodef.vim
 " Note:           AutoDef function partly from zhangguo's vimscript
 "                 Progress bar based off code from "progressbar widget" plugin by
@@ -34,10 +34,13 @@ let s:VlogTypeData = s:VlogTypeData . '\<localparam\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<defparam\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<genvar\>\|'
 let s:VlogTypeData = s:VlogTypeData . '\<integer\>'
+let s:VlogTypeData = s:VlogTypeData . '\<logic\>'
 
 "Calculation 计算类型
 let s:VlogTypeCalc =                  '\<assign\>\|'
 let s:VlogTypeCalc = s:VlogTypeCalc . '\<always\>'
+let s:VlogTypeCalc = s:VlogTypeCalc . '\<always_comb\>'
+let s:VlogTypeCalc = s:VlogTypeCalc . '\<always_ff\>'
 
 "Structure 结构类型
 let s:VlogTypeStru =                  '\<module\>\|'
@@ -137,7 +140,7 @@ let g:_ATV_AUTODEF_DEFAULTS = {
             \'wire_rmv_io':     1,
             \'mv':              0,        
             \'tail_nalign':     0,
-            \'logic':           0    
+            \'logic':           1    
             \}
 for s:key in keys(g:_ATV_AUTODEF_DEFAULTS)
     if !exists('g:atv_autodef_' . s:key)
@@ -147,7 +150,7 @@ endfor
 let s:st_prefix = repeat(' ',g:atv_autodef_st_pos)
 
 "Progressbar 进度条支持
-let s:atv_pb_en = 0
+let s:atv_pb_en = 1
 
 "}}}1
 
